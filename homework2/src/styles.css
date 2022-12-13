@@ -1,0 +1,30 @@
+body {
+    background: lightblue;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(12, 12, 61);  
+    }
+
+.container {
+    max-width: 100%;
+    padding: 40px;
+    background: radial-gradient(circle at 10% 20%, rgb(137, 210, 253) 0%, rgb(255, 241, 188) 90%);
+    
+}
+
+.today-weather {
+    margin: 40px;
+    text-align: center;
+}
+
+.week-weather {
+    margin: 40px;
+    text-align: center;
+}
+
+.today-weather-city {
+    color: yellow
+}
+
+.today-weather-temperature {
+    color: rgb(10, 139, 238);
+}
