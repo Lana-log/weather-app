@@ -28,3 +28,8 @@ body {
 .today-weather-temperature {
     color: rgb(10, 139, 238);
 }
+
+small {
+    font-size: 70%;
+    font-weight: 400;
+}
