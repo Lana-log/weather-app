@@ -1,38 +1,17 @@
-let currentTime = new Date();
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+   let hours = date.getHours();
+   if (hours < 10) {
+     hours = `0${hours}`;
+  }
+   let minutes = date.getMinutes();
+   if (minutes < 10) {
+     minutes = `0${minutes}`;
+   }
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let currentYear = date.getFullYear();
-  let currentDay = days[date.getDay()];
-  let currentMonth = months[date.getMonth()];
-  let currentDate = date.getDate();
-  let currentHours = date.getHours();
-  if (currentHours < 10) {
-    currentHours = `0${currentHours}`;
-  }
-  let currentMinutes = date.getMinutes();
-  if (currentMinutes < 10) {
-    currentMinutes = `0${currentMinutes}`;
-  }
-  let formattedDate = `${currentHours}:${currentMinutes} ${currentDay} ${currentMonth} ${currentDate} ${currentYear}`;
-  return formattedDate;
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
-let date = document.querySelector("#currentDate");
-date.innerHTML = formatDate(currentTime);
-
 
 function search(event) {
   event.preventDefault();
@@ -54,4 +33,6 @@ function showTemperature(response) {
   currentCity.innerHTML = response.data.name;
   let description = document.querySelector("#description")
   description.innerHTML = response.data.weather[0].description;
+  let currentDate = document.querySelector("#currentDate");
+  currentDate.innerHTML = formatDate(response.data.dt * 1000);
 }
