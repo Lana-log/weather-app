@@ -21,12 +21,12 @@ body {
 }
 
 .today-weather {
-    margin: 40px;
+    margin-top: 40px;
     text-align: center;
 }
 
 .week-weather {
-    margin: 40px;
+    margin: 40px 0;
     text-align: center;
 }
 
