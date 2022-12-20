@@ -16,7 +16,7 @@ function formatDate(timestamp) {
 function search(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
-    let city = cityInput.value;
+let city = cityInput.value;
 let units = "metric";
 let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
@@ -35,4 +35,9 @@ function showTemperature(response) {
   description.innerHTML = response.data.weather[0].description;
   let currentDate = document.querySelector("#currentDate");
   currentDate.innerHTML = formatDate(response.data.dt * 1000);
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
