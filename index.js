@@ -15,8 +15,8 @@ function formatDate(timestamp) {
 
 function search(city) {
   let units = "metric";
-  let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiKey = "36e7fo0b86cb5b2eaef4ta82a0364d1f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -31,16 +31,16 @@ form.addEventListener("click", handleSubmit);
 
 function showTemperature(response) {
   let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  temperature.innerHTML = `${Math.round(response.data.temperature.current)}°C`;
   let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = response.data.name;
+  currentCity.innerHTML = response.data.city;
   let description = document.querySelector("#description")
-  description.innerHTML = response.data.weather[0].description;
+  description.innerHTML = response.data.condition.description;
   let currentDate = document.querySelector("#currentDate");
-  currentDate.innerHTML = formatDate(response.data.dt * 1000);
+  currentDate.innerHTML = formatDate(response.data.time * 1000);
   let currentIcon = document.querySelector("#icon");
   currentIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
 }

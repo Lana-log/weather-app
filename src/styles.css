@@ -31,11 +31,12 @@ body {
 }
 
 .today-weather-city {
-    color: yellow
+    font-weight: 700;
 }
 
+
 .today-weather-temperature {
-    color: rgb(10, 139, 238);
+    font-weight: 700;
 }
 
 small {
