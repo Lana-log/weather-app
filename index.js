@@ -38,6 +38,8 @@ function showTemperature(response) {
   description.innerHTML = response.data.condition.description;
   let currentDate = document.querySelector("#currentDate");
   currentDate.innerHTML = formatDate(response.data.time * 1000);
+  let wind = document.querySelector("#wind-speed");
+  wind.innerHTML = `wind: ${response.data.wind.speed} km/h`;
   let currentIcon = document.querySelector("#icon");
   currentIcon.setAttribute(
     "src",
