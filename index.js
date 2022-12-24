@@ -13,6 +13,25 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHtml = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHtml = forecastHtml + `
+    <div class="col-2">
+      <p>${day}</p>
+      <img src="" alt="" />
+      <p>-3°C</p>
+    </div>
+  `;
+  })
+    
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function search(city) {
   let units = "metric";
   let apiKey = "36e7fo0b86cb5b2eaef4ta82a0364d1f";
@@ -46,3 +65,5 @@ function showTemperature(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
 }
+
+displayForecast()
