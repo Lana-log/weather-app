@@ -37,7 +37,7 @@ function displayForecast(response) {
       <img src='http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
         forecastDay.condition.icon
       }.png' alt="" />
-      <p>${Math.round(forecastDay.temperature.day)}</p>
+      <p>${Math.round(forecastDay.temperature.day)}°C</p>
     </div>
   `;
     }
@@ -88,3 +88,4 @@ function showTemperature(response) {
 
   getForecast(response.data.coordinates);
 }
+search("Lviv");
