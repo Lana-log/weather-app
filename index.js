@@ -13,21 +13,36 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHtml = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHtml = forecastHtml + `
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 7) {
+      forecastHtml =
+        forecastHtml +
+        `
     <div class="col-2">
-      <p>${day}</p>
-      <img src="" alt="" />
-      <p>-3°C</p>
+      <p>${formatDay(forecastDay.time)}</p>
+      <img src='http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+        forecastDay.condition.icon
+      }.png' alt="" />
+      <p>${Math.round(forecastDay.temperature.day)}</p>
     </div>
   `;
-  })
-    
+    }
+    });
+  
   forecastHtml = forecastHtml + `</div>`;
   forecastElement.innerHTML = forecastHtml;
 }
